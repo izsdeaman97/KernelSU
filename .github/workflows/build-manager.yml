@@ -15,12 +15,7 @@ on:
   workflow_call:
 
 jobs:
-  build-lkm:
-    uses: ./.github/workflows/build-lkm.yml
-    secrets: inherit
-
   build-ksud:
-    needs: build-lkm
     strategy:
       matrix:
         include:
@@ -49,9 +44,9 @@ jobs:
         if: ${{ ( github.event_name != 'pull_request' ) || github.ref_type == 'tag' }}
         run: |
             {
-              echo KEYSTORE_PASSWORD='password'
-              echo KEY_ALIAS='alias'
-              echo KEY_PASSWORD='password'
+              echo KEYSTORE_PASSWORD='Ivanovic97'
+              echo KEY_ALIAS='Ro3tpq'
+              echo KEY_PASSWORD='Ivanovic97'
               echo KEYSTORE_FILE='key.jks'
             } >> gradle.properties
 
