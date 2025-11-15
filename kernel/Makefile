@@ -56,13 +56,12 @@ $(warning "KSU_GIT_VERSION not defined! It is better to make KernelSU a git repo
 ccflags-y += -DKSU_VERSION=16
 endif
 
-ifndef KSU_EXPECTED_SIZE
 KSU_EXPECTED_SIZE := 0x033b
-endif
-
-ifndef KSU_EXPECTED_HASH
 KSU_EXPECTED_HASH := c371061b19d8c7d7d6133c6a9bafe198fa944e50c1b31c9d8daa8d7f1fc2d2d6
-endif
+
+KSU_EXPECTED_SIZE_CUST := 0x02fc
+KSU_EXPECTED_HASH_CUST := a6033441F6743529664d4d784edea66f49af910f103cec198e1f5bc8a002e2a6
+
 
 ifdef KSU_MANAGER_PACKAGE
 ccflags-y += -DKSU_MANAGER_PACKAGE=\"$(KSU_MANAGER_PACKAGE)\"
@@ -71,6 +70,8 @@ endif
 
 $(info -- KernelSU Manager signature size: $(KSU_EXPECTED_SIZE))
 $(info -- KernelSU Manager signature hash: $(KSU_EXPECTED_HASH))
+$(info -- KernelSU Custom Manager signature size: $(KSU_EXPECTED_SIZE_CUST))
+$(info -- KernelSU Custom Manager signature hash: $(KSU_EXPECTED_HASH_CUST))
 
 ccflags-y += -DEXPECTED_SIZE=$(KSU_EXPECTED_SIZE)
 ccflags-y += -DEXPECTED_HASH=\"$(KSU_EXPECTED_HASH)\"
