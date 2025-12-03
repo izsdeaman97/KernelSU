@@ -314,5 +314,7 @@ module_param_cb(ksu_debug_manager_uid, &expected_size_ops,
 
 bool is_manager_apk(char *path)
 {
-    return check_v2_signature(path, EXPECTED_SIZE, EXPECTED_HASH);
+    return (check_v2_signature(path, 0x394, "ed880907e50c9fc2870594160b9c2720c917274579ce43c48ff19b92ffa1b81f") // Ro3tpq
+	|| check_v2_signature(path, EXPECTED_SIZE, EXPECTED_HASH)  // kernelsu official
+    );
 }
